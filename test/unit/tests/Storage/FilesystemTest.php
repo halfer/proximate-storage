@@ -6,7 +6,7 @@
 
 use PHPUnit\Framework\TestCase;
 use League\Flysystem\Filesystem as FlysystemAdapter;
-use Proximate\CacheAdapter\Filesystem;
+use Proximate\Storage\Filesystem;
 use Cache\Adapter\Filesystem\FilesystemCachePool;
 use Cache\Adapter\Common\CacheItem;
 

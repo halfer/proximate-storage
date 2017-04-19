@@ -7,7 +7,7 @@
  */
 
 use PHPUnit\Framework\TestCase;
-use Proximate\CacheAdapter\BaseAdapter;
+use Proximate\Storage\BaseAdapter;
 
 class BaseAdapterTest extends TestCase
 {
