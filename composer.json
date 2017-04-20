@@ -1,5 +1,6 @@
 {
     "name": "proximate/storage",
+    "description": "Proximate/Storage is a set of classes for persisting data recorded by a Proximate proxy instance",
     "require": {
         "psr/cache": "^1.0",
         "cache/filesystem-adapter": "^0.4.0",
@@ -10,14 +11,14 @@
         "phpunit/phpunit": "^6.1"
     },
     "autoload": {
-        "psr-0" : {
-        "Proximate": "src/"
-      }
+        "psr-0": {
+            "Proximate": "src/"
+        }
     },
     "repositories": [
         {
             "type": "vcs",
-            "url":  "https://github.com/halfer/proximate-core.git"
+            "url": "https://github.com/halfer/proximate-core.git"
         }
     ]
 }
