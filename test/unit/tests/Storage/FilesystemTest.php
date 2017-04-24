@@ -249,7 +249,7 @@ class FilesystemTest extends TestCase
         $this->
             getMockedFlysystem()->
             shouldReceive('listContents')->
-            with('cache')->
+            withNoArgs()->
             andReturn($cacheKeys);
     }
 
