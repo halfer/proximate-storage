@@ -6,12 +6,35 @@
 
 namespace Proximate\Storage;
 
+use Cache\Adapter\Filesystem\FilesystemCachePool;
+use League\Flysystem\Adapter\Local as LocalFileAdapter;
+use League\Flysystem\Filesystem as FlyFilesystem;
 use League\Flysystem\Filesystem as FlysystemAdapter;
 use Proximate\Exception\Server;
 
 class Filesystem extends BaseAdapter
 {
     protected $flysystemAdapter;
+
+    /**
+     * Shortcut method to create an adaptor to pass to the Filesystem constructor
+     *
+     * @param string $cachePath
+     * @return FlysystemAdapter
+     */
+    public static function createFilesystemCachePool($cachePath)
+    {
+        // Get the parent dir and the leaf name
+        $baseDir = dirname($cachePath);
+        $leafDir = basename($cachePath);
+
+        // This sets up the cache storage system
+        $filesystemAdapter = new LocalFileAdapter($baseDir);
+        $filesystem = new FlyFilesystem($filesystemAdapter);
+        $filesystemCachePool = new FilesystemCachePool($filesystem, $leafDir);
+
+        return $filesystemCachePool;
+    }
 
     public function __construct(FlysystemAdapter $flysystemAdapter)
     {
