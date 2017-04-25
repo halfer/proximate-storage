@@ -26,8 +26,8 @@ class FilecacheFactory
     public function init()
     {
         // Get the parent dir and the leaf name
-        $baseDir = $this->getDirname($this->rootPath);
-        $leafDir = $this->getBasename($this->rootPath);
+        $baseDir = $this->getDirname($this->cachePath);
+        $leafDir = $this->getBasename($this->cachePath);
 
         // This sets up the cache storage system
         $filesystemAdapter = new LocalFileAdapter($baseDir);
@@ -39,6 +39,12 @@ class FilecacheFactory
         $this->getCacheAdapter()->setCacheItemPoolInterface($this->getCachePool());
     }
 
+    /**
+     * Returns a cache pool
+     *
+     * @return FilesystemCachePool
+     * @throws InitException
+     */
     public function getCachePool()
     {
         if (!$this->cachePool)
@@ -49,6 +55,12 @@ class FilecacheFactory
         return $this->cachePool;
     }
 
+    /**
+     * Returns a Proximate cache adapter
+     *
+     * @return FilesystemCacheAdapter
+     * @throws InitException
+     */
     public function getCacheAdapter()
     {
         if (!$this->cacheAdapter)
