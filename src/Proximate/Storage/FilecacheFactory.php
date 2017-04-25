@@ -36,6 +36,7 @@ class FilecacheFactory
 
         // Here is a dependency to perform additional ops on the cache
         $this->cacheAdapter = new FilesystemCacheAdapter($filesystem);
+        $this->getCacheAdapter()->setCacheFolder($leafDir);
         $this->getCacheAdapter()->setCacheItemPoolInterface($this->getCachePool());
     }
 
